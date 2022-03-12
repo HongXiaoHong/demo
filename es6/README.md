@@ -1,2 +1,2 @@
-# Introduction
+# 玩转ES6
 
