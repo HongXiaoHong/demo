@@ -6,4 +6,11 @@
     * [常量之const](statement/const.md)
 * [赋值](assign/README.md)
     * [解构](assign/deconstruct.md)
+* [内置对象](object/README.md)
+    * [字符串](object/string.md)
+    * [正则](object/regex.md)
+    * [数值](object/number.md)
+    * [数组](object/array.md)
+    * [函数](object/function.md)
+    * [对象](object/object.md)
 
