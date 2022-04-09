@@ -13,4 +13,6 @@
     * [数组](object/array.md)
     * [函数](object/function.md)
     * [对象](object/object.md)
+* [运算符](operator/README.md)
+    * [三点_平铺](operator/three_point.md)
 
