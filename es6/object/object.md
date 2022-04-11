@@ -198,3 +198,81 @@ const error = new AggregateError([
  */
 AggregateError(errors[, message])
 ```
+
+## 对象的新增方法
+### Object.is()
+“Same-value equality”（同值相等）算法
+用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致
+```ecmascript 6
+Object.is('foo', 'foo')
+// true
+Object.is({}, {})
+// false
+// 一是+0不等于-0，二是NaN等于自身
++0 === -0 //true
+NaN === NaN // false
+
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true
+```
+
+### Object.assign()
+用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）
+```ecmascript 6
+const target = { a: 1 };
+
+const source1 = { b: 2 };
+const source2 = { c: 3 };
+
+Object.assign(target, source1, source2);
+target // {a:1, b:2, c:3}
+```
+### Object.getOwnPropertyDescriptors()
+
+返回某个对象属性的描述对象（descriptor）
+const obj = {
+foo: 123,
+get bar() { return 'abc' }
+};
+
+Object.getOwnPropertyDescriptors(obj)
+// { foo:
+//    { value: 123,
+//      writable: true,
+//      enumerable: true,
+//      configurable: true },
+//   bar:
+//    { get: [Function: get bar],
+//      set: undefined,
+//      enumerable: true,
+//      configurable: true } }
+
+该方法的引入目的，主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题
+Object.getOwnPropertyDescriptors()方法的另一个用处，是配合Object.create()方法，将对象属性克隆到一个新对象。这属于浅拷贝
+Object.getOwnPropertyDescriptors()方法可以实现一个对象继承另一个对象
+### __proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()
+如果一个对象本身部署了__proto__属性，该属性的值就是对象的原型
+
+Object.setPrototypeOf()
+设置一个对象的原型对象（prototype），返回参数对象本身。它是 ES6 正式推荐的设置原型对象的方法
+
+Object.getPrototypeOf()
+读取一个对象的原型对象
+
+### Object.keys()，Object.values()，Object.entries()
+Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名
+
+Object.values方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值
+
+Object.entries的基本用途是遍历对象的属性
+Object.entries方法的另一个用处是，将对象转为真正的Map结构
+### Object.fromEntries()
+
+Object.fromEntries()方法是Object.entries()的逆操作，用于将一个键值对数组转为对象
+```ecmascript 6
+Object.fromEntries([
+  ['foo', 'bar'],
+  ['baz', 42]
+])
+// { foo: "bar", baz: 42 }
+```
