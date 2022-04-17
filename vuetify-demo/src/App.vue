@@ -60,6 +60,8 @@ export default Vue.extend({
     drawer: null,
     links: [
       ['mdi-inbox-arrow-down', 'home', '/'],
+      ['mdi-inbox-arrow-up', 'todo', '/todo'],
+      ['mdi-access-point', 'test', '/test'],
       ['mdi-alert-octagon', 'about', '/about'],
     ],
   }),
