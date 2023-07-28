@@ -79,6 +79,31 @@ class Genre(models.Model):
 
 ## 运用 Django 的 admin 站点填充网站数据。
 
+```bash
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py createsuperuser
+Username (leave blank to use 'hong'): hong
+Email address: 1908711045@qq.com
+Password:
+Password (again):
+This password is too short. It must contain at least 8 characters.
+This password is entirely numeric.
+Bypass password validation and create user anyway? [y/N]: N
+Password:
+Password (again):
+Superuser created successfully.
+
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 28, 2023 - 08:58:50
+Django version 4.2.3, using settings 'locallibrary.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+```
+
 ## 面对不同的网络请求，创建视图函数（views）取回相应的数据。并把数据用模板（templates）渲染成 HTML 展示在浏览器里。
 
 ## 创建网络分发器，将不同的 URL 模式分发给特定的视图函数（views）。
