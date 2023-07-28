@@ -104,6 +104,24 @@ Quit the server with CTRL-BREAK.
 
 ```
 
+可以用不同形式注册 模型到 admin 用户中
+
+涉及模型的修改 都要使用 指令对 数据库模型就行修改
+
+```bash
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py makemigrations
+No changes detected
+
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, catalog, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py runserver
+
+```
+
 ## 面对不同的网络请求，创建视图函数（views）取回相应的数据。并把数据用模板（templates）渲染成 HTML 展示在浏览器里。
 
 ## 创建网络分发器，将不同的 URL 模式分发给特定的视图函数（views）。
