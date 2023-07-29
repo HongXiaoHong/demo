@@ -174,6 +174,96 @@ del request.session['my_car']
 
 ## 为应用编写测试。
 
+测试的时候碰到一个错误
+
+```bash
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py test
+Traceback (most recent call last):
+  File "E:\github\demo\hello_django\locallibrary\locallibrary\manage.py", line 22, in <m
+odule>
+    main()
+  File "E:\github\demo\hello_django\locallibrary\locallibrary\manage.py", line 18, in ma
+in
+    execute_from_command_line(sys.argv)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\__init
+__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\__init
+__.py", line 436, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\comman
+ds\test.py", line 24, in run_from_argv
+    super().run_from_argv(argv)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\base.p
+y", line 412, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\base.p
+y", line 458, in execute
+    output = self.handle(*args, **options)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\core\management\comman
+ds\test.py", line 68, in handle
+    failures = test_runner.run_tests(test_labels)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\test\runner.py", line
+1048, in run_tests
+    suite = self.build_suite(test_labels, extra_tests)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\test\runner.py", line
+898, in build_suite
+    tests = self.load_tests_for_label(label, discover_kwargs)
+  File "E:\github\demo\hello_django\venv\lib\site-packages\django\test\runner.py", line
+872, in load_tests_for_label
+    tests = self.test_loader.discover(start_dir=label, **kwargs)
+  File "D:\app\code\python\python-3.9.5\lib\unittest\loader.py", line 349, in discover
+    tests = list(self._find_tests(start_dir, pattern))
+  File "D:\app\code\python\python-3.9.5\lib\unittest\loader.py", line 414, in _find_test
+s
+    yield from self._find_tests(full_path, pattern, namespace)
+  File "D:\app\code\python\python-3.9.5\lib\unittest\loader.py", line 405, in _find_test
+s
+    tests, should_recurse = self._find_test_path(
+  File "D:\app\code\python\python-3.9.5\lib\unittest\loader.py", line 458, in _find_test
+_path
+    raise ImportError(
+ImportError: 'tests' module incorrectly imported from 'E:\\github\\demo\\hello_django\\l
+ocallibrary\\locallibrary\\catalog\\tests'. Expected 'E:\\github\\demo\\hello_django\\lo
+callibrary\\locallibrary\\catalog'. Is this module globally installed?
+
+(venv) E:\github\demo\hello_django\locallibrary\locallibrary>python manage.py test
+Found 3 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+setUpTestData: Run once to set up non-modified data for all class methods.
+setUp: Run once for every test method to setup clean data.
+Method: test_false_is_false.
+.setUp: Run once for every test method to setup clean data.
+Method: test_false_is_true.
+FsetUp: Run once for every test method to setup clean data.
+Method: test_one_plus_one_equals_two.
+.
+======================================================================
+FAIL: test_false_is_true (catalog.tests.test_models.YourTestClass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\github\demo\hello_django\locallibrary\locallibrary\catalog\tests\test_models.
+py", line 22, in test_false_is_true
+    self.assertTrue(False)
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+
+```
+
+
+https://stackoverflow.com/questions/55973614/importerror-module-incorrectly-imported
+
+其实就是因为同一级目录下
+有一个  tests 目录跟有一个 tests.py 文件
+
+![同级目录下存在两个 tests](https://raw.githubusercontent.com/HongXiaoHong/images/main/picture/20230729165632.png)
+
 ## 有效运用 Django 的安全系统。
 
 ## 把应用布置到生产环境中。
