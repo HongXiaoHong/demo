@@ -48,3 +48,12 @@ def book_detail_view(request, pk):
         'catalog/book_detail.html',
         context={'book': book_id, }
     )
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
