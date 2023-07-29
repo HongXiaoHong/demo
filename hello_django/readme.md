@@ -128,6 +128,48 @@ Running migrations:
 
 ## 添加用户认证和会话（sessions）管理网站行为和进入权限。
 
+session 会话管理 写了一个 刷新页面多少次 小栗子 用骨架创立项目的时候已经自动帮我们自动加上了 session 相关的管理
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'catalog.apps.CatalogConfig',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+```
+
+我们只需要像操作字典一样操作 session 中的值就可以了
+
+```python
+
+# Get a session value by its key (e.g. 'my_car'), raising a KeyError if the key is not present
+my_car = request.session['my_car']
+
+# Get a session value, setting a default if it is not present ('mini')
+my_car = request.session.get('my_car', 'mini')
+
+# Set a session value
+request.session['my_car'] = 'mini'
+
+# Delete a session value
+del request.session['my_car']
+
+```
+
 ## 使用表单。
 
 ## 为应用编写测试。
