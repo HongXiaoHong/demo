@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.yi.hong.mybatis.mapper.CompanyMapper">
+
+    <resultMap id="BaseResultMap" type="Company">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="salary" jdbcType="DOUBLE" property="salary"/>
+    </resultMap>
+
+    <select id="findById" resultType="me.yi.hong.mybatis.entity.Company">
+        select * from company where id = #{id}
+    </select>
+    <select id="findList" resultType="me.yi.hong.mybatis.entity.Company">
+        select * from company
+    </select>
+    <select id="findListByCondition" parameterType="company" resultType="company">
+        select * from company
+        where 1 = 1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="name != null">
+            and name = #{name}
+        </if>
+        <if test="age != null">
+            and age = #{age}
+        </if>
+        <if test="address != null">
+            and address = #{address}
+        </if>
+        <if test="salary != null">
+            and salary = #{salary}
+        </if>
+    </select>
+    <insert id="insert" parameterType="me.yi.hong.mybatis.entity.Company">
+        insert into company(ID,NAME,AGE,ADDRESS,SALARY)
+        values (#{id},#{name},#{age},#{address},#{salary})
+    </insert>
+    <update id="update" parameterType="me.yi.hong.mybatis.entity.Company">
+        update company
+        <set>
+            <if test="name != null">
+                name = #{name}
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+            <if test="address != null">
+                address = #{address}
+            </if>
+            <if test="salary != null">
+                salary = #{salary}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from company where id = #{id}
+    </delete>
+</mapper>

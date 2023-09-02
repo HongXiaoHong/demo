@@ -1,0 +1,9 @@
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: me.yi.hong.mybatis.entity
+
+spring:
+  datasource:
+    url: jdbc:sqlite:E:/github/demo/mybatis/db/db.sqlite
+    driver-class-name: org.sqlite.JDBC
+
