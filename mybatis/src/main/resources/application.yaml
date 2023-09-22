@@ -6,4 +6,3 @@ spring:
   datasource:
     url: jdbc:sqlite:E:/github/demo/mybatis/db/db.sqlite
     driver-class-name: org.sqlite.JDBC
-
