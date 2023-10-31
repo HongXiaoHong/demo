@@ -12,4 +12,6 @@ public interface CompanyMapper {
     List<Company> findListByCondition(Company company);
     void update(Company company);
     void delete(String id);
+
+    void insert(Company company);
 }

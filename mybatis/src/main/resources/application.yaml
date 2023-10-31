@@ -1,6 +1,8 @@
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: me.yi.hong.mybatis.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 spring:
   datasource:
