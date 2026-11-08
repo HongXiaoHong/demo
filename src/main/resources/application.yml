@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:./data/demo.db
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+      schema-locations: classpath:init/schema.sql
+      data-locations: classpath:init/data.sql
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+
+logging:
+  level:
+    root: INFO
+    com.example.demo: DEBUG
